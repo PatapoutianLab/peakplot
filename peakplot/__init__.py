@@ -63,4 +63,4 @@ from .utils import (
 )
 
 __version__ = "1.0.0"
-__author__ = "Peakplot Development Team"
+__author__ = "GitHub@Xbar @RenhaoL"

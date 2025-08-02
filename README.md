@@ -4,24 +4,22 @@ A Python package for analyzing telemetry data from PhysioTel HD implants manufac
 
 ## Overview
 
-Peakplot provides comprehensive tools for processing, analyzing, and visualizing pressure measurement data. It includes functions for peak detection, statistical analysis, birth timing patterns, and multi-animal comparative studies. The package is designed to handle large datasets and supports various data formats commonly used in physiological research.
+Peakplot provides basic tools for processing, analyzing, and visualizing pressure measurement data. It includes functions for peak detection, statistical analysis, and visualization. The package is designed to handle large datasets and can significantly reduce space requirement from DSI Ponemah exported files.
 
 ## Features
 
-- **Data I/O**: Read and write data in multiple formats (HDF5, CSV, NPZ)
+- **Data I/O**: Read and write data from DSI exports
 - **Peak Detection**: Adaptive peak detection with noise estimation
 - **Statistical Analysis**: Comprehensive peak statistics and birth timing analysis
 - **Visualization**: Rich plotting capabilities for data exploration and publication-ready figures
-- **Multi-animal Analysis**: Batch processing and comparative analysis across multiple subjects
 - **Time Series Processing**: Data filtering, resampling, and temporal analysis
 
 ## Modules
 
 ### `data_io`
 Handles data input/output operations including:
-- Reading raw data files from DSI telemetry systems
-- Converting between data formats (NPZ to HDF5, CSV export)
-- Appending multiple data files with continuous time indexing
+- Importing raw data files from DSI telemetry systems
+- Combining multiple data files with continuous time indexing
 - Saving processed data with compression
 
 ### `preprocessing`
@@ -49,10 +47,8 @@ Comprehensive plotting functions:
 
 ### `matrix_ops`
 Multi-file analysis and convolution operations:
-- Kernel-based analysis for birth timing detection
+- Kernel-based analysis for threshold-based event detection
 - Linear and Gaussian kernel generation
-- Batch processing across multiple animals
-- Threshold-based event detection
 
 ### `utils`
 Utility functions for common operations:
@@ -61,11 +57,11 @@ Utility functions for common operations:
 - Zeitgeber time conversions for circadian analysis
 - Data export helpers
 
-## Installation
+## Running the code
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/Xbar/peakplot
 cd peakplot
 
 # Install dependencies
@@ -74,6 +70,14 @@ pip install -r requirements.txt
 # Install in development mode
 pip install -e .
 ```
+
+## Dependencies
+To run the code you will need Python>=3.6, and the following packages installed
+- NumPy (≥1.19.0)
+- Pandas (≥1.3.0)
+- SciPy (≥1.7.0)
+- Matplotlib (≥3.3.0)
+- PyTables (≥3.6.0) - for HDF5 support
 
 ## Usage
 
@@ -99,22 +103,6 @@ The package expects ASCII data files exported from DSI Ponemah with columns:
 - `Time`: Time in seconds
 - `Pressure`: Pressure measurements in mmHg
 - `Temperature`: Temperature measurements (optional)
-
-## Requirements
-
-- Python 3.6+
-
-All package dependencies are listed in `requirements.txt` and can be installed using:
-```bash
-pip install -r requirements.txt
-```
-
-Core dependencies include:
-- NumPy (≥1.19.0)
-- Pandas (≥1.3.0)
-- SciPy (≥1.7.0)
-- Matplotlib (≥3.3.0)
-- PyTables (≥3.6.0) - for HDF5 support
 
 ## Data from publication
 
